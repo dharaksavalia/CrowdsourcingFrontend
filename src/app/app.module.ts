@@ -17,10 +17,13 @@ import { RoleComponent } from './admin/role/role.component';
 import { NavComponent } from './navigation/nav/nav.component';
 import { RegistrationComponent } from './admin/registration/registration.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { LoginComponent } from './login/login.component';
 
 //Services
-import {RoleService} from './admin/role/role.service';
-import {SearchService} from './itunes/itunes.service';
+import { RoleService } from './admin/role/role.service';
+import { SearchService } from './itunes/itunes.service';
+import { LoginService } from './login/login.service';
+import { AuthGaurdService } from './app-routing/auth.gaurd'
 
 
 //import {Routes}from '@angular/router';
@@ -41,6 +44,7 @@ const routes: Routes = [
     NavComponent,
     RegistrationComponent,
     AdminHomeComponent,
+    LoginComponent,
   ],
   imports: [
   // RouterModule.forRoot(routes,{useHash: true}), 
@@ -53,7 +57,9 @@ const routes: Routes = [
   ],
   providers: [
     RoleService,
-    SearchService
+    SearchService,
+    LoginService,
+    AuthGaurdService
   ],
   bootstrap: [AppComponent]
 })

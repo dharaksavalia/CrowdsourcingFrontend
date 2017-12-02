@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http,Response} from '@angular/http';
+import { Http,Response,Headers,RequestOptions} from '@angular/http';
 import { Role} from './role.model';
 import { AppSettings} from '../../app.setting';
 
@@ -10,12 +10,19 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RoleService {
 
-  private url:string = AppSettings.REST_ENDPOINT;
+  private url:string = AppSettings.getEndPoint();
+  private token:string = AppSettings.token;
 
   constructor(private http:Http) { }
 
+  createHeader=()=>{
+     let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+     let options = new RequestOptions({ headers: headers });
+     return options;
+  }
+
   getRoles = function(): Observable<Role[]> {
-      return this.http.get(this.url+"/role")
+      return this.http.get(this.url+"/role",this.createHeader())
               .map((res:Response)=>res.json());
   }
 

@@ -15,6 +15,7 @@ $ npm install --save underscore
 $ npm install --save @types/underscore
 $ npm install --save ng2-modal
 $ npm install --save ng2-validation
+$ npm install --save jwt-decode
 
 ChangeLog
 $ npm uninstall --save ng2-modal

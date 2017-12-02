@@ -27,6 +27,7 @@ import 'rxjs/add/operator/map';
 })
 export class RoleComponent implements OnInit {
 
+
   roles: Role[];
   role: Role ={} as any;
   addEnabled: boolean = false;
@@ -38,6 +39,7 @@ export class RoleComponent implements OnInit {
 
 
   constructor(private roleService: RoleService) {
+   
   }
 
   ngOnInit() {
