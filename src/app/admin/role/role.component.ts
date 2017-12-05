@@ -28,11 +28,13 @@ import 'rxjs/add/operator/map';
 export class RoleComponent implements OnInit {
 
 
-  roles: Role[];
-  role: Role ={} as any;
+  roles:  Role[];
+  role:   Role ={} as any;
+  modal:  Modal;
+  modalError = false;
   addEnabled: boolean = false;
 
-   results: Observable<SearchItem[]>;
+  results: Observable<SearchItem[]>;
   addRoleCheckbox: NgModel;
 
   searchField: FormControl; //[formControl]="searchField"
@@ -50,13 +52,7 @@ export class RoleComponent implements OnInit {
     this.addEnabled = !this.addEnabled;
   };
 
-  onEdit = () => {
-    this.roleService.editRole(this.role)
-    .subscribe((res) => {
-      this.refreshRole();
-    });
-    this.role={} as any;
-  }
+
 
   onSubmit = (myForm: NgForm) => {
     //console.log(myForm.value);
@@ -74,19 +70,50 @@ export class RoleComponent implements OnInit {
       );
   }
 
-  editRole = (value: Role,id: Modal) => {
+  editRole = (value: Role,modal: Modal) => {
     console.log(value);
     this.role = new Role(value.roleId,value.roleName,value.roleDesc);
-    id.open();    
+    this.modal = modal;
+    this.modal.open();    
   }
 
-  deleteRole = (value: Role) => {
+  deleteRole = (value: Role,modal: Modal) => {
     console.log(value);
-    this.roleService.deleteRole(value)
+    this.role = new Role(value.roleId,value.roleName,value.roleDesc);
+    this.modal = modal;
+    this.modal.open();    
+  }
+
+  onDelete = () => {
+    console.log(this.role);
+    this.roleService.deleteRole(this.role)
       .subscribe((res) => {
         console.log(res);
+        this.modal.close();
         this.refreshRole();
       });
+  }
+
+  onEdit = () => {
+    this.roleService.editRole(this.role)
+    .catch(
+      (error)=>{
+        console.log('testing');
+   // this.notifyService.popError();
+    return Observable.throw(error);
+}
+    )
+    .subscribe((res) => {
+      this.modal.close();      
+      this.refreshRole();
+    },
+    (error)=>{
+      console.log('Error')
+     this.modalError = true;
+      //this.modal.close();
+    }
+  );
+    this.role={} as any;
   }
 
   refreshRole = () => {

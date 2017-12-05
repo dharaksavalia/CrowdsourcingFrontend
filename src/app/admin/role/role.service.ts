@@ -5,6 +5,9 @@ import { AppSettings} from '../../app.setting';
 
 import { Observable} from 'rxjs/Observable';
 
+//import {AuthHttp} from 'angular2-jwt';
+
+
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -13,7 +16,11 @@ export class RoleService {
   private url:string = AppSettings.getEndPoint();
   private token:string = AppSettings.token;
 
-  constructor(private http:Http) { }
+  constructor(private http:Http) { 
+    
+
+  }
+
 
   createHeader=()=>{
      let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
@@ -22,7 +29,9 @@ export class RoleService {
   }
 
   getRoles = function(): Observable<Role[]> {
-      return this.http.get(this.url+"/role",this.createHeader())
+    //      return this.http.get(this.url+"/role",this.createHeader())
+
+    return this.http.get(this.url+"/role")
               .map((res:Response)=>res.json());
   }
 

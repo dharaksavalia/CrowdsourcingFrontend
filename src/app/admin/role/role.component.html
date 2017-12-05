@@ -86,8 +86,8 @@
         <td>{{role.roleName}}</td>
         <td>{{role.roleDesc}}</td>
         <td>
-          <button type="button" class="btn btn-warning fa fa-edit" (click)="editRole(role,myModal)"> </button>
-          <button type="button" class="btn btn-danger fa fa-minus" (click)="deleteRole(role)"></button>
+          <button type="button" class="btn btn-warning fa fa-edit" (click)="editRole(role,editRoleModal)"> </button>
+          <button type="button" class="btn btn-danger fa fa-minus" (click)="deleteRole(role,deleteRoleModal)"></button>
         </td>
       </tr>
     </tbody>
@@ -97,7 +97,7 @@
 <br/>
 
 <div class="row">
-  <modal #myModal>
+  <modal #editRoleModal>
     <modal-header>
       <h1>Edit Role</h1>
     </modal-header>
@@ -129,8 +129,28 @@
       </form>
     </modal-content>
     <modal-footer>
-      <button class="btn btn-primary" [disabled]="MyEditForm.invalid" (click)="onEdit();myModal.close()">Save</button>
-      <button class="btn btn-primary" (click)="myModal.close()">close</button>
+      <button class="btn btn-primary" [disabled]="MyEditForm.invalid" (click)="onEdit();editRoleModal.close()">Save</button>
+      <button class="btn btn-primary" (click)="editRoleModal.close()">close</button>
+    </modal-footer>
+  </modal>
+</div>
+
+
+<div class="row">
+  <modal #deleteRoleModal>
+    <modal-header>
+      <h1>Delete Role</h1>
+    </modal-header>
+   
+    <modal-content class="row">
+        <div *ngIf="modalError" class="row alert alert-danger">
+                Could not Delete
+        </div>
+          Are you sure ?
+    </modal-content>
+    <modal-footer>
+      <button class="btn btn-primary" (click)="onDelete()">Delete</button>
+      <button class="btn btn-primary" (click)="deleteRoleModal.close()">close</button>
     </modal-footer>
   </modal>
 </div>
