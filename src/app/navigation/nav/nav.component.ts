@@ -13,7 +13,7 @@ import { Role } from './../../auth/auth.gaurd';
 })
 export class NavComponent implements OnInit {
 
-  intro:string="Demo App";
+  intro:string="Login";
   message:string;
 
   constructor(private router: Router,private messageService: MessageService) {

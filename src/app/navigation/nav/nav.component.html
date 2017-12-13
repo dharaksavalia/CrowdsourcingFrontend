@@ -8,6 +8,9 @@
       <li *ngIf="isGuest()" class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['register']">Register</a>
       </li>
+      <li *ngIf="true" class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['idea']">Idea</a>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li *ngIf="!isGuest()" class="nav-item" [routerLinkActive]="['active']">

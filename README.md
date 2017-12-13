@@ -16,6 +16,11 @@ $ npm install --save @types/underscore
 $ npm install --save ng2-modal
 $ npm install --save ng2-validation
 $ npm install --save jwt-decode
+$ npm install --save @angular/material
+$ npm install --save @angular/animations
+$ npm install —save hammerjs
+
+
 
 ChangeLog
 $ npm uninstall --save ng2-modal
