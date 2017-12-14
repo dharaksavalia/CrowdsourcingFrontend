@@ -14,7 +14,7 @@ export class InterceptedHttp extends Http {
         return super.get(url, this.getRequestOptionArgs(url,options))
                     .catch(
                         (error)=>{
-                                console.log('testing');
+                                console.log('testing getting ');
                            // this.notifyService.popError();
                             return Observable.throw(error);
                         }
@@ -26,7 +26,7 @@ export class InterceptedHttp extends Http {
         return super.post(url, body, this.getRequestOptionArgs(url,options))
         .catch(
             (error)=>{
-                    console.log('testing');
+                    console.log('testing second');
                // this.notifyService.popError();
                 return Observable.throw(error);
             }
@@ -35,10 +35,11 @@ export class InterceptedHttp extends Http {
 
     put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
         url = this.updateUrl(url);
+        console.log("error");
         return super.put(url, body, this.getRequestOptionArgs(url,options))
         .catch(
             (error)=>{
-                   
+                   console.log("testing put");
                // this.notifyService.popError();
                 return Observable.throw(error);
             }
@@ -50,7 +51,7 @@ export class InterceptedHttp extends Http {
         return super.delete(url, this.getRequestOptionArgs(url,options))
         .catch(
             (error)=>{
-                    console.log('testing');
+                    console.log('testing delelte');
                // this.notifyService.popError();
                 return Observable.throw(error);
             }
@@ -68,11 +69,14 @@ export class InterceptedHttp extends Http {
         if (options.headers == null) {
             options.headers = new Headers();
         }
-       // options.headers.append('Content-Type', 'application/json');
+        console.log("url should be"+url);
+        options.headers.append('Content-Type', 'application/json');
        
         if(!url.includes("oauth")){
             options.headers.append(AUTH_HEADER_KEY,AUTH_PREFIX+' '+AppSettings.token);
         }
+        
         return options;
     }
+    
 }

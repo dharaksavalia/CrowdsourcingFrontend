@@ -5,6 +5,7 @@ import { MessageService,MessageType } from './../messages/data.service'
 import { AppSettings, TOKEN_AUTH_USERNAME, TOKEN_AUTH_PASSWORD } from './../app.setting'
 import 'rxjs/add/operator/map'
 import * as jwt_decode from 'jwt-decode';
+import { headersToString } from 'selenium-webdriver/http';
 
 
 
@@ -38,7 +39,7 @@ export class LoginService {
                 headers: headers,
                 withCredentials: true });
         
-        //console.log(headers);
+        console.log(headers+body);
 
         return this.http
             .post(

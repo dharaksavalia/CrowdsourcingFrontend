@@ -11,7 +11,6 @@ export class AuthGaurdService implements CanActivate{
 
     canActivate(route: ActivatedRouteSnapshot){
         const expectedRole = route.data.role;
-        
         if(!AppSettings.isTokenExpired() && AppSettings.role == expectedRole ){
             return true;
         }else{
@@ -25,5 +24,6 @@ export class AuthGaurdService implements CanActivate{
 export enum Role{
     Admin,
     Guest,
-    Startup   
+    Startup,
+    Funder   
 }

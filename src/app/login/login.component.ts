@@ -22,12 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   login = () => {
+    console.log(this.model.username+this.model.password);
     this.loading = true;
     this.loginService.login(this.model.username, this.model.password)
       .subscribe(
       (result) => {
         console.log('Success')
         if (result) {
+          console.log("to navigate")
           this.router.navigate(['/role'])
         } else {
           this.error = 'Login Failed';
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
               this.error = 'Error: While connecting to server';
               break;
           case 400:
-              this.error = 'Erro;r: Username and Password incorrect';
+              this.error = 'Error: Username and Password incorrect';
               break
           case 401:
               this.error = 'Error: Check token server';

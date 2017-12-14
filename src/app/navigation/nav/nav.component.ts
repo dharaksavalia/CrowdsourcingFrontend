@@ -27,6 +27,7 @@ export class NavComponent implements OnInit {
                          if(messageData.type == MessageType.LOGIN_SUCCESS){
                           this.intro= 'Demo App '+messageData.username;
                           AppSettings.role = Role[messageData.role];
+                          console.log("sucesssfa");
 
                          }else if(messageData.type == MessageType.LOGOUT_SUCCESS){
                           AppSettings.role = Role.Guest;

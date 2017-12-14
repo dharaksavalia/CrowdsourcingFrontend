@@ -36,7 +36,7 @@ import { UsersComponent } from './users/users.component';
 import { MessageService } from './messages/data.service';
 import { IdeaComponent } from './idea/idea.component';
 import { SidemenuComponent } from './idea/sidemenu/sidemenu.component';
-
+import {CattegoriesService}from './categories/cattegories.service';
 
 export function authHttpServiceFactory(http: Http) {
   return new AuthHttp(new AuthConfig({
@@ -84,6 +84,7 @@ export function authHttpServiceFactory(http: Http) {
     UserService,
     SidemenuService,
     MessageService,
+    CattegoriesService,
     {
       provide: Http,
       useFactory: (xhrBackend: XHRBackend, requestOptions: RequestOptions) => { 

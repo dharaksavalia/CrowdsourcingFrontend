@@ -22,8 +22,8 @@ export const AUTH_PREFIX = 'Bearer';
 export class AppSettings {
 
     private static CONNECT_TO_SECURE_SERVER:boolean = true;
-    public static REST_ENDPOINT='http://127.0.0.1:8085/DemoApp';
-    public static REST_SECURE_ENDPOINT='http://127.0.0.1:8443/SecureDemoApp';
+    public static REST_ENDPOINT='http://127.0.0.1:8085/crowdsourcing';
+    public static REST_SECURE_ENDPOINT='http://127.0.0.1:8443/crowdsourcing';
 
     private static _token:string;
     private static _role:Role;
