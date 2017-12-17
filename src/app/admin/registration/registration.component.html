@@ -1,6 +1,42 @@
-<div class="jumbotron">
+<div class="jumbotron" >
     <h1>Register Page</h1> 
-    <p>
-          CREATE A CRUD FOR REGISTRATION  
-    </p> 
+    <form #myForm="ngForm" (ngSubmit)="registerForm.form.valid && register()" #registerForm="ngForm" novalidate>
+      <div>
+          <h3>Personal Detail</h3>
+        <label>First Name</label>
+        <input type="text" name="firstname"  [(ngModel)]="model.firstname" #firstname="ngModel" required/>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input type="text" name="lastname" [(ngModel)]="model.lastname" #lastName="ngModel" required/>
+      </div>
+      <div>
+        <h3>Login Detail</h3>
+        <div>
+          <label>Username</label>
+          <input type="text" name="userName" [(ngModel)]="model.username" #userName="ngModel" required/>
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
+        </div>
+      </div>
+      <div>
+        <h3>What you want to become</h3>
+        <div>
+          <label>Funder</label>
+          <input type="checkbox" name="funder" [(ngModel)]="model.funder" #funder="ngModel" >
+        </div>
+      <div>
+        <label>Startup</label>
+        <input type="checkbox" name="startUp"[(ngModel)]="model.startUp" #startUp="ngModel"/>
+      </div>
+      <div>
+        <label>Creator</label>
+        <input type="checkbox" name="creator" [(ngModel)]="model.creator" #creator="ngModel"/>
+      </div>
+    </div>
+      <button type="submit">Register</button>
+    </form>
+
   </div>

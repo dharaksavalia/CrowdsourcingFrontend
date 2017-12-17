@@ -1,9 +1,10 @@
 export class User {
-    username: string;
+    userName: string;
     password: string;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     creator:string;
     startup:string;
     funder:string;
+    category:string;
 }

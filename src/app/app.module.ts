@@ -37,7 +37,8 @@ import { MessageService } from './messages/data.service';
 import { IdeaComponent } from './idea/idea.component';
 import { SidemenuComponent } from './idea/sidemenu/sidemenu.component';
 import {CattegoriesService}from './categories/cattegories.service';
-
+import {RegistrationService}from './admin/registration/registration.service';
+import {IdeaService}from './idea/idea.service';
 export function authHttpServiceFactory(http: Http) {
   return new AuthHttp(new AuthConfig({
     headerPrefix: 'Bearer',
@@ -60,6 +61,7 @@ export function authHttpServiceFactory(http: Http) {
     UsersComponent,
     IdeaComponent,
     SidemenuComponent,
+    
   ],
   imports: [
   // RouterModule.forRoot(routes,{useHash: true}), 
@@ -84,6 +86,8 @@ export function authHttpServiceFactory(http: Http) {
     UserService,
     SidemenuService,
     MessageService,
+    RegistrationService,
+    IdeaService,
     CattegoriesService,
     {
       provide: Http,

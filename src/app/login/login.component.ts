@@ -30,12 +30,11 @@ export class LoginComponent implements OnInit {
         console.log('Success')
         if (result) {
           console.log("to navigate")
-          this.router.navigate(['/role'])
+          this.router.navigate(['/idea'])
         } else {
           this.error = 'Login Failed';
         }
         this.loading = false;
-        
       },
       (error) => {
         console.log('Error')

@@ -2,5 +2,44 @@
   Click on Categories to display ideas of that category
 </h1>
 <div >
-<button type="button" class="btn btn-default">{{catagoriesList}}</button>
+<ul id="categories">       
+<li *ngFor="let item of catagoriesList">
+  <button type="button" class="btn btn-default" (click)="onCategories(item)">{{item}}</button>
+</li>
+</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="col-md-1 text-center">Name</th>
+      <th class="col-md-2 text-center">Description</th>
+      <th class="col-md-* text-center">Plans 
+        <thead>
+          <tr>
+            <th class="col-md-1 text-center">Quantity</th>
+            <th class="col-md-2 text-center">Amount</th>
+          </tr>
+        </thead>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let idea of ideas" class="text-center">
+      <td>{{idea.name}}</td>
+      <td>{{idea.description}}</td>
+      <td>
+        <table class="table table-striped"> 
+          <tbody>
+            <tr *ngFor="let fund of idea.fundingCreations" class="text-center">
+              <td>{{fund.unit}}</td>
+              <td>{{fund.amount}}</td>
+              <td>
+                <button type="button" class="btn btn btn-success" (click)="buyFund(fund)">Buy </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>
